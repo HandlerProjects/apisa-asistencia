@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apisa Asistencia – Limpieza Profesional en Palencia</title>
+<meta name="description" content="Empresa de limpieza profesional en Palencia. Comunidades, garajes y oficinas. Presupuesto sin compromiso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --naranja: #E86A10;
+    --naranja-claro: #FF8C3A;
+    --naranja-oscuro: #C45500;
+    --negro: #111111;
+    --gris-oscuro: #2a2a2a;
+    --gris-medio: #555;
+    --gris-claro: #f5f3f0;
+    --blanco: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(232,106,16,0.15);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--negro);
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text span { color: var(--naranja); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--gris-medio);
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--naranja); }
+
+  .nav-cta {
+    background: var(--naranja);
+    color: white !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--naranja-oscuro) !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 5% 60px;
+    gap: 4rem;
+    background: var(--gris-claro);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(232,106,16,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,106,16,0.1);
+    color: var(--naranja-oscuro);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(232,106,16,0.2);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero-title .highlight {
+    color: var(--naranja);
+    position: relative;
+  }
+
+  .hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 0; right: 0;
+    height: 4px;
+    background: var(--naranja);
+    opacity: 0.25;
+    border-radius: 2px;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--gris-medio);
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .btn-primary {
+    background: var(--naranja);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(232,106,16,0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: var(--naranja-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(232,106,16,0.45);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--negro);
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--naranja);
+    color: var(--naranja);
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.8s 0.5s forwards;
+  }
+
+  .hero-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s;
+  }
+
+  .hero-card:hover { transform: translateX(6px); }
+
+  .hero-card-icon {
+    width: 48px; height: 48px;
+    background: rgba(232,106,16,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+  }
+
+  .hero-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .hero-card p {
+    font-size: 0.82rem;
+    color: var(--gris-medio);
+    font-weight: 300;
+  }
+
+  /* ── SERVICIOS ── */
+  #servicios {
+    padding: 90px 5%;
+    background: white;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--naranja);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--gris-medio);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .servicio-card {
+    background: var(--gris-claro);
+    border-radius: 16px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .servicio-img-wrap {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .servicio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .servicio-card:hover .servicio-img {
+    transform: scale(1.05);
+  }
+
+  .servicio-body {
+    padding: 1.6rem 2rem 2rem;
+  }
+
+  .servicio-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--naranja);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .servicio-card:hover::before { transform: scaleX(1); }
+
+  .servicio-card:hover {
+    background: white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+
+  .servicio-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .servicio-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+  }
+
+  .servicio-body p {
+    font-size: 0.9rem;
+    color: var(--gris-medio);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── POR QUÉ ── */
+  #nosotros {
+    padding: 90px 5%;
+    background: var(--negro);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #nosotros::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(232,106,16,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  #nosotros .section-title { color: white; }
+
+  #nosotros .section-desc { color: rgba(255,255,255,0.55); }
+
+  .ventajas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .ventaja {
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    transition: border-color 0.3s;
+  }
+
+  .ventaja:hover { border-color: rgba(232,106,16,0.4); }
+
+  .ventaja-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--naranja);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .ventaja h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .ventaja p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── EMPLEO ── */
+  #empleo {
+    padding: 90px 5%;
+    background: var(--gris-claro);
+  }
+
+  .empleo-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .empleo-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .empleo-info p {
+    font-size: 0.95rem;
+    color: var(--gris-medio);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .empleo-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .empleo-bullets li {
+    font-size: 0.9rem;
+    color: var(--gris-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+  }
+
+  .empleo-bullets li::before {
+    content: '✓';
+    color: var(--naranja);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* FORMULARIO */
+  .form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+  }
+
+  .form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-card .form-sub {
+    font-size: 0.85rem;
+    color: var(--gris-medio);
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--negro);
+    background: var(--gris-claro);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--naranja);
+    background: white;
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .cv-mailto-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 16px;
+    background: var(--gris-claro);
+    border: 1.5px solid rgba(232,106,16,0.3);
+    border-radius: 8px;
+    color: var(--naranja-oscuro);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cv-mailto-btn:hover {
+    background: rgba(232,106,16,0.08);
+    border-color: var(--naranja);
+    color: var(--naranja);
+  }
+
+  .cv-nota {
+    font-size: 0.8rem;
+    color: var(--gris-medio);
+    margin-top: 10px;
+    line-height: 1.6;
+    padding: 10px 14px;
+    background: rgba(232,106,16,0.05);
+    border-radius: 8px;
+    border-left: 3px solid rgba(232,106,16,0.3);
+  }
+
+  .privacidad {
+    font-size: 0.78rem;
+    color: var(--gris-medio);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .privacidad input { margin-top: 2px; accent-color: var(--naranja); }
+
+  .form-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--naranja);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(232,106,16,0.3);
+  }
+
+  .form-submit:hover {
+    background: var(--naranja-oscuro);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(232,106,16,0.4);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .form-success .check {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-success h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-success p {
+    font-size: 0.9rem;
+    color: var(--gris-medio);
+    font-weight: 300;
+  }
+
+  /* ── CONTACTO ── */
+  #contacto {
+    padding: 90px 5%;
+    background: white;
+  }
+
+  .contacto-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contacto-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.8rem;
+  }
+
+  .contacto-info > p {
+    font-size: 0.95rem;
+    color: var(--gris-medio);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contacto-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contacto-item-icon {
+    width: 44px; height: 44px;
+    background: rgba(232,106,16,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--naranja);
+  }
+
+  .contacto-item h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gris-medio);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .contacto-item a, .contacto-item p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--negro);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .contacto-item a:hover { color: var(--naranja); }
+
+  .contact-form-card {
+    background: var(--gris-claro);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+
+  .contact-form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-form-card .form-sub {
+    font-size: 0.85rem;
+    color: var(--gris-medio);
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--negro);
+    color: rgba(255,255,255,0.5);
+    padding: 2.5rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(232,106,16,0.2);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .footer-logo-text span { color: var(--naranja); }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--naranja); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+
+  .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 90px 5% 50px;
+      text-align: center;
+    }
+
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { display: none; }
+
+    .empleo-wrapper,
+    .contacto-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* Mobile nav toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--negro); border-radius: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="42" height="42" rx="10" fill="#E86A10"/>
+      <text x="21" y="29" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="white">A</text>
+    </svg>
+    <span class="logo-text">Apisa<span>Asistencia</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#empleo">Trabaja con nosotros</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir presupuesto</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').style.display='flex'" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <span class="hero-badge">🏢 Limpieza Profesional · Palencia</span>
+    <h1 class="hero-title">
+      Espacios limpios,<br>
+      empresas que <span class="highlight">funcionan</span>
+    </h1>
+    <p class="hero-desc">
+      En Apisa Asistencia llevamos años cuidando las instalaciones de comunidades, garajes y empresas de Palencia. Profesionalidad, discreción y resultados que se ven.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Pedir presupuesto
+      </a>
+      <a href="#servicios" class="btn-secondary">
+        Ver servicios →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-icon">🏢</div>
+      <div>
+        <h3>Comunidades de vecinos</h3>
+        <p>Zonas comunes, escaleras y fachadas</p>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">🚗</div>
+      <div>
+        <h3>Garajes y parkings</h3>
+        <p>Limpieza profunda de pavimentos y accesos</p>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">💼</div>
+      <div>
+        <h3>Oficinas y empresas</h3>
+        <p>Mantenimiento diario o periódico</p>
+      </div>
+    </div>
+    <div class="hero-card" style="background: rgba(232,106,16,0.06); border: 1px solid rgba(232,106,16,0.2);">
+      <div class="hero-card-icon" style="background: rgba(232,106,16,0.15);">📞</div>
+      <div>
+        <h3 style="color: var(--naranja);">610 41 00 07</h3>
+        <p>Presupuesto sin compromiso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <span class="section-label">Lo que hacemos</span>
+  <h2 class="section-title">Nuestros servicios</h2>
+  <p class="section-desc">Nos especializamos en el mantenimiento de espacios comunitarios y profesionales. Sin excusas, sin retrasos.</p>
+
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-img-wrap">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80" alt="Limpieza comunidades de vecinos" class="servicio-img">
+      </div>
+      <div class="servicio-body">
+        <span class="servicio-icon">🏢</span>
+        <h3>Comunidades de vecinos</h3>
+        <p>Limpieza regular de zonas comunes, escaleras, ascensores, portal y patios. Adaptamos la frecuencia a las necesidades de cada comunidad.</p>
+      </div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Limpieza garajes y parkings" class="servicio-img">
+      </div>
+      <div class="servicio-body">
+        <span class="servicio-icon">🚗</span>
+        <h3>Garajes y parkings</h3>
+        <p>Barrido y fregado de pavimentos, limpieza de rampas, desengrasado de manchas de aceite y mantenimiento general de la instalación.</p>
+      </div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-img-wrap">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Limpieza oficinas empresa" class="servicio-img">
+      </div>
+      <div class="servicio-body">
+        <span class="servicio-icon">💼</span>
+        <h3>Oficinas de empresa</h3>
+        <p>Mantenimiento diario, semanal o quincenal. Despachos, salas de reuniones, aseos y zonas de trabajo. Siempre fuera de tu horario laboral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS / VENTAJAS -->
+<section id="nosotros">
+  <span class="section-label" style="color: var(--naranja-claro);">Por qué elegirnos</span>
+  <h2 class="section-title">La diferencia está en los detalles</h2>
+  <p class="section-desc">Más de una década dando servicio en Palencia con el mismo equipo, los mismos valores y la misma exigencia.</p>
+
+  <div class="ventajas-grid">
+    <div class="ventaja">
+      <div class="ventaja-num">01</div>
+      <h4>Personal propio y estable</h4>
+      <p>No subcontratamos. El equipo que empieza contigo es el que trabaja contigo cada día.</p>
+    </div>
+    <div class="ventaja">
+      <div class="ventaja-num">02</div>
+      <h4>Productos homologados</h4>
+      <p>Usamos productos certificados, seguros para personas, mascotas y el medio ambiente.</p>
+    </div>
+    <div class="ventaja">
+      <div class="ventaja-num">03</div>
+      <h4>Presupuesto en 24h</h4>
+      <p>Visitamos las instalaciones y enviamos propuesta sin compromiso en menos de un día.</p>
+    </div>
+    <div class="ventaja">
+      <div class="ventaja-num">04</div>
+      <h4>Flexibilidad horaria</h4>
+      <p>Nos adaptamos a tus horarios. Mañanas, tardes o fines de semana si lo necesitas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLEO -->
+<section id="empleo">
+  <div class="empleo-wrapper">
+    <div class="empleo-info">
+      <span class="section-label">Únete al equipo</span>
+      <h2>Trabaja con nosotros</h2>
+      <p>
+        Buscamos personas responsables, comprometidas y con ganas de formar parte de un equipo consolidado en Palencia. No se requiere experiencia previa, nosotros te formamos.
+      </p>
+      <ul class="empleo-bullets">
+        <li>Contrato desde el primer día</li>
+        <li>Horarios adaptados a tu situación</li>
+        <li>Equipo cercano y buen ambiente de trabajo</li>
+        <li>Posibilidad de crecimiento interno</li>
+        <li>Formación continua a cargo de la empresa</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <h3>Envía tu candidatura</h3>
+      <p class="form-sub">Rellena el formulario y nos pondremos en contacto contigo.</p>
+
+      <div id="empleo-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" id="emp-nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Apellidos *</label>
+            <input type="text" id="emp-apellidos" placeholder="Tus apellidos" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Teléfono *</label>
+          <input type="tel" id="emp-telefono" placeholder="6XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="emp-email" placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label>¿Tienes experiencia en limpieza?</label>
+          <select id="emp-exp">
+            <option value="">Selecciona una opción</option>
+            <option value="ninguna">Sin experiencia</option>
+            <option value="menos1">Menos de 1 año</option>
+            <option value="1-3">Entre 1 y 3 años</option>
+            <option value="mas3">Más de 3 años</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>¿Tienes CV? Envíalo por email</label>
+          <a href="mailto:contacto@apisaasistencia.es?subject=Candidatura%20-%20Apisa%20Asistencia&body=Hola%2C%20adjunto%20mi%20curr%C3%ADculum%20para%20la%20candidatura." class="cv-mailto-btn">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            Enviar CV a contacto@apisaasistencia.es
+          </a>
+          <p class="cv-nota">También puedes pasarte por nuestras oficinas de <strong>lunes a viernes de 9:30 a 13:00 h</strong> — C/ Don Pelayo, 6 Entreplanta, Palencia.</p>
+        </div>
+        <div class="form-group">
+          <label>Mensaje (opcional)</label>
+          <textarea id="emp-msg" placeholder="Cuéntanos algo sobre ti o tu disponibilidad..."></textarea>
+        </div>
+        <label class="privacidad">
+          <input type="checkbox" id="emp-privacidad" required>
+          He leído y acepto la <a href="#" onclick="document.getElementById('modal-privacidad').style.display='flex';return false;" style="color:var(--naranja);">política de privacidad</a>. Mis datos serán usados únicamente para el proceso de selección.
+        </label>
+        <button class="form-submit" onclick="enviarCandidatura(event)">Enviar candidatura</button>
+      </div>
+
+      <div class="form-success" id="empleo-success">
+        <div class="check">✅</div>
+        <h4>¡Candidatura recibida!</h4>
+        <p>Gracias por tu interés. Revisaremos tu perfil y nos pondremos en contacto contigo en breve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-wrapper">
+    <div class="contacto-info">
+      <span class="section-label">Estamos en Palencia</span>
+      <h2>¿Hablamos de tu proyecto?</h2>
+      <p>Cuéntanos qué necesitas y te enviamos un presupuesto sin compromiso en menos de 24 horas. También puedes llamarnos directamente.</p>
+
+      <div class="contacto-items">
+        <div class="contacto-item">
+          <div class="contacto-item-icon">📞</div>
+          <div>
+            <h4>Teléfono</h4>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+              <a href="tel:610410007" style="display:inline-flex;align-items:center;gap:6px;background:var(--gris-claro);padding:7px 14px;border-radius:6px;font-size:0.88rem;font-weight:500;color:var(--negro);text-decoration:none;border:1.5px solid #e0e0e0;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--naranja)'" onmouseout="this.style.borderColor='#e0e0e0'">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                Llamar
+              </a>
+              <a href="https://wa.me/34610410007?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;padding:7px 14px;border-radius:6px;font-size:0.88rem;font-weight:500;color:white;text-decoration:none;border:1.5px solid #25D366;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:contacto@apisaasistencia.es">contacto@apisaasistencia.es</a>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <a href="https://www.google.com/maps/search/?api=1&query=C%2F+Don+Pelayo+6+Entreplanta+34003+Palencia+Espa%C3%B1a" target="_blank" rel="noopener">C/ Don Pelayo, 6 Entreplanta<br>34003 Palencia, España</a>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">🕐</div>
+          <div>
+            <h4>Horario</h4>
+            <p>Lunes a Viernes: 9:30 – 13:00 h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h3>Solicitar presupuesto</h3>
+      <p class="form-sub">Responderemos en menos de 24 horas.</p>
+
+      <div id="contacto-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" id="c-nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono *</label>
+            <input type="tel" id="c-telefono" placeholder="6XX XXX XXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="c-email" placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label>Servicio que necesitas</label>
+          <select id="c-servicio">
+            <option value="">Selecciona un servicio</option>
+            <option>Comunidad de vecinos</option>
+            <option>Garaje / Parking</option>
+            <option>Oficina / Empresa</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea id="c-msg" placeholder="Cuéntanos las características de las instalaciones..."></textarea>
+        </div>
+        <label class="privacidad">
+          <input type="checkbox" id="c-privacidad" required>
+          Acepto la <a href="#" onclick="document.getElementById('modal-privacidad').style.display='flex';return false;" style="color:var(--naranja);">política de privacidad</a> y el tratamiento de mis datos.
+        </label>
+        <button class="form-submit" onclick="enviarContacto(event)">Solicitar presupuesto</button>
+      </div>
+
+      <div class="form-success" id="contacto-success">
+        <div class="check">✅</div>
+        <h4>¡Mensaje enviado!</h4>
+        <p>Nos pondremos en contacto contigo en menos de 24 horas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#inicio" class="footer-logo">
+    <span class="footer-logo-text">Apisa<span>Asistencia</span></span>
+  </a>
+  <p>© 2025 Apisa Asistencia · CIF: B-34277749 · Palencia</p>
+  <ul class="footer-links">
+    <li><a href="#" onclick="document.getElementById('modal-legal').style.display='flex';return false;">Aviso legal</a></li>
+    <li><a href="#" onclick="document.getElementById('modal-privacidad').style.display='flex';return false;">Política de privacidad</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a class="whatsapp-float" href="https://wa.me/34610410007?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20limpieza." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  function enviarCandidatura(event) {
+    var nombre = document.getElementById('emp-nombre').value.trim();
+    var apellidos = document.getElementById('emp-apellidos').value.trim();
+    var telefono = document.getElementById('emp-telefono').value.trim();
+    var privacidad = document.getElementById('emp-privacidad').checked;
+
+    if (!nombre || !apellidos || !telefono) {
+      alert('Por favor, rellena los campos obligatorios (nombre, apellidos y teléfono).');
+      return;
+    }
+    if (!privacidad) {
+      alert('Debes aceptar la política de privacidad para continuar.');
+      return;
+    }
+
+    var FORM_ACCESS_KEY = '6cf75944-94b1-449a-a066-a7be912aff47';
+    var formData = {
+      access_key: FORM_ACCESS_KEY,
+      nombre: nombre,
+      apellidos: apellidos,
+      telefono: telefono,
+      email: document.getElementById('emp-email').value,
+      experiencia: document.getElementById('emp-exp').value,
+      mensaje: document.getElementById('emp-msg').value,
+      subject: 'Nueva candidatura - Apisa Asistencia'
+    };
+
+    var btn = event && event.target ? event.target : document.querySelector('#empleo-form .form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        document.getElementById('empleo-form').style.display = 'none';
+        document.getElementById('empleo-success').style.display = 'block';
+      } else {
+        alert('Hubo un error al enviar. Por favor, inténtalo de nuevo o llámanos al 610 41 00 07.');
+        btn.textContent = 'Enviar candidatura';
+        btn.disabled = false;
+      }
+    })
+    .catch(function() {
+      alert('Error de conexión. Por favor, inténtalo de nuevo.');
+      btn.textContent = 'Enviar candidatura';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarContacto(event) {
+    var nombre = document.getElementById('c-nombre').value.trim();
+    var telefono = document.getElementById('c-telefono').value.trim();
+    var privacidad = document.getElementById('c-privacidad').checked;
+
+    if (!nombre || !telefono) {
+      alert('Por favor, rellena los campos obligatorios (nombre y teléfono).');
+      return;
+    }
+    if (!privacidad) {
+      alert('Debes aceptar la política de privacidad para continuar.');
+      return;
+    }
+
+    var FORM_ACCESS_KEY2 = '6cf75944-94b1-449a-a066-a7be912aff47';
+    var formData2 = {
+      access_key: FORM_ACCESS_KEY2,
+      nombre: nombre,
+      telefono: telefono,
+      email: document.getElementById('c-email').value,
+      servicio: document.getElementById('c-servicio').value,
+      mensaje: document.getElementById('c-msg').value,
+      subject: 'Solicitud de presupuesto - Apisa Asistencia'
+    };
+
+    var btn2 = event && event.target ? event.target : document.querySelector('#contacto-form .form-submit');
+    btn2.textContent = 'Enviando...';
+    btn2.disabled = true;
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formData2)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        document.getElementById('contacto-form').style.display = 'none';
+        document.getElementById('contacto-success').style.display = 'block';
+      } else {
+        alert('Hubo un error al enviar. Por favor, inténtalo de nuevo o llámanos al 610 41 00 07.');
+        btn2.textContent = 'Solicitar presupuesto';
+        btn2.disabled = false;
+      }
+    })
+    .catch(function() {
+      alert('Error de conexión. Por favor, inténtalo de nuevo.');
+      btn2.textContent = 'Solicitar presupuesto';
+      btn2.disabled = false;
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var nl = document.querySelector('.nav-links');
+      if (nl) nl.style.display = '';
+    });
+  });
+</script>
+
+<!-- MODAL AVISO LEGAL -->
+<div id="modal-legal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;border-radius:16px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;">
+    <button onclick="document.getElementById('modal-legal').style.display='none'" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#888;">&times;</button>
+
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1.5rem;">Aviso Legal</h2>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>1. DATOS IDENTIFICATIVOS DEL TITULAR</strong><br>
+      En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:<br><br>
+      <strong>Razón social:</strong> Apisa Asistencia SL<br>
+      <strong>CIF:</strong> B-34277749<br>
+      <strong>Domicilio social:</strong> C/ Don Pelayo, 6 Entreplanta, 34003 Palencia, España<br>
+      <strong>Teléfono:</strong> 610 41 00 07<br>
+      <strong>Email:</strong> contacto@apisaasistencia.es<br>
+      <strong>Sitio web:</strong> www.apisaasistencia.es<br>
+      <strong>Actividad:</strong> Servicios de limpieza de edificios y locales (CNAE 8121 / 8122)
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>2. OBJETO Y ÁMBITO DE APLICACIÓN</strong><br>
+      El presente Aviso Legal regula el acceso y uso del sitio web apisaasistencia.es. El mero acceso implica la aceptación plena y sin reservas de todas las disposiciones incluidas en este aviso. Apisa Asistencia se reserva el derecho a modificar este aviso legal en cualquier momento, siendo responsabilidad del usuario su consulta periódica.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>3. PROPIEDAD INTELECTUAL E INDUSTRIAL</strong><br>
+      Todos los contenidos del sitio web —textos, imágenes, logotipos, diseño gráfico, código fuente y demás elementos— son propiedad de Apisa Asistencia o de terceros que han autorizado su uso, y están protegidos por la normativa española e internacional de propiedad intelectual e industrial. Queda expresamente prohibida su reproducción total o parcial, distribución, transformación o comunicación pública sin autorización expresa y por escrito del titular.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>4. CONDICIONES DE USO</strong><br>
+      El usuario se compromete a hacer un uso correcto del sitio web, de conformidad con la ley, la moral, el orden público y el presente Aviso Legal. Queda prohibido el uso del sitio para fines ilícitos o lesivos, la introducción de virus informáticos, y cualquier acción que dañe, inutilice o deteriore el sitio o impida su normal uso.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>5. EXCLUSIÓN DE RESPONSABILIDAD</strong><br>
+      Apisa Asistencia no garantiza la disponibilidad continua del sitio web ni la ausencia de errores en sus contenidos. No se hace responsable de los daños que pudieran derivarse del uso del sitio, de interrupciones del servicio, o del acceso a contenidos de terceros enlazados desde este sitio.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>6. COOKIES</strong><br>
+      Este sitio web no utiliza cookies de seguimiento ni publicidad. Únicamente puede hacer uso de cookies técnicas estrictamente necesarias para el funcionamiento del sitio, que no requieren consentimiento del usuario conforme al artículo 22.2 de la LSSI-CE.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;">
+      <strong>7. LEGISLACIÓN APLICABLE Y JURISDICCIÓN</strong><br>
+      Este Aviso Legal se rige por la legislación española, en particular por la Ley 34/2002 (LSSI-CE), el Real Decreto Legislativo 1/1996 (Ley de Propiedad Intelectual) y el Código Civil. Para cualquier controversia derivada del uso de este sitio, las partes, con renuncia expresa a cualquier otro fuero, se someten a los Juzgados y Tribunales de Palencia.
+    </p>
+  </div>
+</div>
+
+<!-- MODAL POLÍTICA DE PRIVACIDAD -->
+<div id="modal-privacidad" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;border-radius:16px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;">
+    <button onclick="document.getElementById('modal-privacidad').style.display='none'" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#888;">&times;</button>
+
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1.5rem;">Política de Privacidad</h2>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>1. RESPONSABLE DEL TRATAMIENTO</strong><br>
+      <strong>Identidad:</strong> Apisa Asistencia SL<br>
+      <strong>CIF:</strong> B-34277749<br>
+      <strong>Dirección:</strong> C/ Don Pelayo, 6 Entreplanta, 34003 Palencia, España<br>
+      <strong>Teléfono:</strong> 610 41 00 07<br>
+      <strong>Email:</strong> contacto@apisaasistencia.es
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>2. DATOS QUE RECABAMOS Y FINALIDAD</strong><br>
+      Los datos personales facilitados a través de los formularios de este sitio son tratados con las siguientes finalidades:<br><br>
+      · <strong>Formulario de contacto / solicitud de presupuesto:</strong> nombre, teléfono y, opcionalmente, email y descripción del servicio. Finalidad: atender la solicitud y elaborar un presupuesto personalizado. Plazo de conservación: hasta que se resuelva la consulta y, como máximo, 1 año desde el último contacto.<br><br>
+      · <strong>Formulario de candidaturas de empleo:</strong> nombre, apellidos, teléfono, email, experiencia y, opcionalmente, currículum vitae y mensaje. Finalidad: gestión del proceso de selección de personal para cubrir puestos en el sector de la limpieza. Plazo de conservación: 12 meses desde la recepción, salvo que el interesado solicite la supresión antes.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>3. LEGITIMACIÓN</strong><br>
+      La base jurídica del tratamiento es el consentimiento expreso del interesado (art. 6.1.a del RGPD), prestado mediante el marcado de la casilla habilitada a tal efecto en cada formulario. En el caso de candidaturas, también puede ampararse en la ejecución de medidas precontractuales a petición del interesado (art. 6.1.b del RGPD).
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>4. DESTINATARIOS</strong><br>
+      Los datos no serán cedidos a terceros, salvo obligación legal. Para el envío de los formularios se utiliza el servicio Web3Forms, que actúa como encargado del tratamiento y garantiza el cumplimiento del RGPD. No se realizan transferencias internacionales de datos.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>5. DERECHOS DEL INTERESADO</strong><br>
+      De acuerdo con el RGPD (UE) 2016/679 y la Ley Orgánica 3/2018 (LOPDGDD), el interesado puede ejercer en cualquier momento los siguientes derechos:<br>
+      · <strong>Acceso:</strong> conocer qué datos suyos tratamos.<br>
+      · <strong>Rectificación:</strong> corregir datos inexactos o incompletos.<br>
+      · <strong>Supresión:</strong> solicitar la eliminación de sus datos.<br>
+      · <strong>Oposición:</strong> oponerse al tratamiento de sus datos.<br>
+      · <strong>Limitación:</strong> solicitar la restricción del tratamiento.<br>
+      · <strong>Portabilidad:</strong> recibir sus datos en formato estructurado.<br><br>
+      Para ejercer cualquiera de estos derechos, escriba a <strong>contacto@apisaasistencia.es</strong> indicando el derecho que desea ejercer y adjuntando copia de su DNI u otro documento identificativo. Tiene derecho, asimismo, a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (www.aepd.es).
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+      <strong>6. MEDIDAS DE SEGURIDAD</strong><br>
+      Apisa Asistencia ha adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad e integridad de los datos personales, así como para evitar su pérdida, alteración o acceso por parte de terceros no autorizados, de acuerdo con lo establecido en el RGPD y la normativa española vigente.
+    </p>
+
+    <p style="font-size:0.88rem;line-height:1.85;color:#444;">
+      <strong>7. MODIFICACIONES</strong><br>
+      Apisa Asistencia se reserva el derecho a modificar esta Política de Privacidad para adaptarla a novedades legislativas o cambios en su actividad. Se recomienda al usuario consultarla periódicamente. Última actualización: mayo de 2025.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
