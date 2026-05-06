@@ -1203,6 +1203,9 @@
     var nombre = document.getElementById('emp-nombre').value.trim();
     var apellidos = document.getElementById('emp-apellidos').value.trim();
     var telefono = document.getElementById('emp-telefono').value.trim();
+    var email = document.getElementById('emp-email').value.trim();
+    var exp = document.getElementById('emp-exp').value;
+    var msg = document.getElementById('emp-msg').value.trim();
     var privacidad = document.getElementById('emp-privacidad').checked;
 
     if (!nombre || !apellidos || !telefono) {
@@ -1214,17 +1217,14 @@
       return;
     }
 
-    var FORM_ACCESS_KEY = '6cf75944-94b1-449a-a066-a7be912aff47';
-    var formData = {
-      access_key: FORM_ACCESS_KEY,
-      nombre: nombre,
-      apellidos: apellidos,
-      telefono: telefono,
-      email: document.getElementById('emp-email').value,
-      experiencia: document.getElementById('emp-exp').value,
-      mensaje: document.getElementById('emp-msg').value,
-      subject: 'Nueva candidatura - Apisa Asistencia'
-    };
+    var expTexto = { ninguna: 'Sin experiencia', menos1: 'Menos de 1 año', '1-3': 'Entre 1 y 3 años', mas3: 'Más de 3 años' }[exp] || 'No indicada';
+
+    var cuerpo = '--- NUEVA CANDIDATURA ---\n\n'
+      + 'Nombre: ' + nombre + ' ' + apellidos + '\n'
+      + 'Teléfono: ' + telefono + '\n'
+      + (email ? 'Email: ' + email + '\n' : '')
+      + 'Experiencia en limpieza: ' + expTexto + '\n'
+      + (msg ? '\nMensaje:\n' + msg : '');
 
     var btn = event && event.target ? event.target : document.querySelector('#empleo-form .form-submit');
     btn.textContent = 'Enviando...';
@@ -1233,7 +1233,11 @@
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({
+        access_key: '6cf75944-94b1-449a-a066-a7be912aff47',
+        subject: 'Nueva candidatura - ' + nombre + ' ' + apellidos,
+        message: cuerpo
+      })
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -1256,6 +1260,9 @@
   function enviarContacto(event) {
     var nombre = document.getElementById('c-nombre').value.trim();
     var telefono = document.getElementById('c-telefono').value.trim();
+    var email = document.getElementById('c-email').value.trim();
+    var servicio = document.getElementById('c-servicio').value;
+    var msg = document.getElementById('c-msg').value.trim();
     var privacidad = document.getElementById('c-privacidad').checked;
 
     if (!nombre || !telefono) {
@@ -1267,16 +1274,12 @@
       return;
     }
 
-    var FORM_ACCESS_KEY2 = '6cf75944-94b1-449a-a066-a7be912aff47';
-    var formData2 = {
-      access_key: FORM_ACCESS_KEY2,
-      nombre: nombre,
-      telefono: telefono,
-      email: document.getElementById('c-email').value,
-      servicio: document.getElementById('c-servicio').value,
-      mensaje: document.getElementById('c-msg').value,
-      subject: 'Solicitud de presupuesto - Apisa Asistencia'
-    };
+    var cuerpo = '--- SOLICITUD DE PRESUPUESTO ---\n\n'
+      + 'Nombre: ' + nombre + '\n'
+      + 'Teléfono: ' + telefono + '\n'
+      + (email ? 'Email: ' + email + '\n' : '')
+      + (servicio ? 'Servicio solicitado: ' + servicio + '\n' : '')
+      + (msg ? '\nMensaje:\n' + msg : '');
 
     var btn2 = event && event.target ? event.target : document.querySelector('#contacto-form .form-submit');
     btn2.textContent = 'Enviando...';
@@ -1285,7 +1288,11 @@
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(formData2)
+      body: JSON.stringify({
+        access_key: '6cf75944-94b1-449a-a066-a7be912aff47',
+        subject: 'Presupuesto solicitado - ' + nombre + ' (' + (servicio || 'sin especificar') + ')',
+        message: cuerpo
+      })
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
