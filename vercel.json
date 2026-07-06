@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/favicon-v2.png" }
+  ],
   "redirects": [
     { "source": "/:path*", "has": [{ "type": "host", "value": "apisaasistencia.es" }], "destination": "https://www.apisaasistencia.es/:path*", "permanent": true },
     { "source": "/nosotros", "destination": "/", "permanent": true },
